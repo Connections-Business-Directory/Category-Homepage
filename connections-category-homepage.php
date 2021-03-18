@@ -170,6 +170,11 @@ if ( ! class_exists( 'Connections_Category_Homepage' ) ) {
 			//	return $link;
 			//}
 
+			if ( 'category' !== $taxonomy ) {
+
+				return $link;
+			}
+
 			$slugs     = array();
 			$ancestors = cnTerm::getAncestors( $term->term_id, $taxonomy );
 			$homepage  = ( $meta = self::getHomepage( $term->term_id ) ) ? $meta : $atts['home_id'];
@@ -192,7 +197,7 @@ if ( ! class_exists( 'Connections_Category_Homepage' ) ) {
 
 			$link = cnURL::permalink(
 				array(
-					'type'       => 'category',
+					'type'       => 'category-taxonomy-term',
 					'slug'       => implode( '/', $slugs ),
 					'title'      => $term->name,
 					'text'       => $term->name,
