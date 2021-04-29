@@ -244,10 +244,9 @@ if ( ! class_exists( 'Connections_Category_Homepage' ) ) {
 
 			add_action(
 				'admin_notices',
-				create_function(
-					'',
-					'echo \'<div id="message" class="error"><p><strong>ERROR:</strong> Connections must be installed and active in order use Connections Category Homepage.</p></div>\';'
-				)
+				function() {
+					echo '<div id="message" class="error"><p><strong>ERROR:</strong> Connections must be installed and active in order use Connections Category Homepage.</p></div>';
+				}
 			);
 
 			return FALSE;
